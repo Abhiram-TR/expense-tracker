@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transit Tracker</title>
-
+    <title>Expense Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
     margin: 0;
@@ -91,6 +91,7 @@ button:hover {
         <button id="button2">cash out</button>
     </div>
     <label id="numberLabel">0</label>
+    <canvas id="myPieChart" width="200" height="200"></canvas>
     <script >
       
 
@@ -119,6 +120,30 @@ const total_cash_out= localStorage.getItem('cash_out');
 
 const numberLabel = document.getElementById("numberLabel");
     numberLabel.innerText = total_cash_in-total_cash_out; // Set the number to 200
+
+     const ctx = document.getElementById('myPieChart').getContext('2d');
+const width = 200; // Adjust as needed
+const height = 200; // Adjust as needed
+
+const data = {
+    labels: ['cash in', 'cash out'],
+    datasets: [{
+        label: 'Expense',
+        data: [total_cash_in,total_cash_out], // Example data
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ]
+    }]
+};
+
+
+const myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data
+});
+
     </script>
 </body>
 </html>
