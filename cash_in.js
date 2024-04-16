@@ -43,7 +43,7 @@ function displayExpenses(date) {
     onValue(expensesRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
             const expense = childSnapshot.val();
-            if (expense.date === date) {
+            if (expense.date == date) {
                 if(expense.status=="in"){
                 if (!itemsDisplayed.has(expense.item)) {
                     itemsDisplayed.add(expense.item); // Add item to the set
